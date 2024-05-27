@@ -1,10 +1,6 @@
 import java.lang.Math;
 
 public class Game {
-    public static final String ANSI_RESET = "\u001B[0m";
-    public static final String ANSI_GREEN = "\u001B[32m";
-    public static final String ANSI_RED = "\u001B[31m";
-    public static final String ANSI_CYAN = "\u001B[36m";
     private final int[][] gameTable = new int[10][10];
     private final int[] startLadders = {2,8,20,32,41,74,82,85};
     private final int[] finalLadders = {23,34,77,68,79,88,100,95};
@@ -12,13 +8,15 @@ public class Game {
     private final int[] finalSnakes = {9,15,5,33,37,54,70,25};
     private final int numPlayers;
     private final Player[] players;
+
     private Player currentPlayer;
     private int dice = 0;
     private Player winner = null;
+
     public Game(int numPlayers){
         this.numPlayers = numPlayers;
         int n = 100;
-        for(int i = 0; i < 10; i++)
+        for(int i = 0; i < 10; i++) 
         {
             for(int j = 0; j < 10; j++)
             {
@@ -62,14 +60,14 @@ public class Game {
             for(int j = 0; j < 10; j++){
                 int[] n = isOccupied(this.gameTable[i][j]);
                 if(n.length != 0){
-                    for (int value : n) System.out.print(ANSI_CYAN + "P" + value + ANSI_RESET);
+                    for (int value : n) System.out.print(Pallette.ANSI_CYAN + "P" + value + Pallette.ANSI_RESET);
                     System.out.print(" ");
                 }
                 else {
                     if(contains(this.startLadders,this.gameTable[i][j]) != -1)
-                        System.out.print(ANSI_GREEN + this.gameTable[i][j] + ANSI_RESET);
+                        System.out.print(Pallette.ANSI_GREEN + this.gameTable[i][j] + Pallette.ANSI_RESET);
                     else if(contains(this.startSnakes,this.gameTable[i][j]) != -1)
-                        System.out.print(ANSI_RED + this.gameTable[i][j] + ANSI_RESET);
+                        System.out.print(Pallette.ANSI_RED + this.gameTable[i][j] + Pallette.ANSI_RESET);
                     else {
                         System.out.print(this.gameTable[i][j]);
                     }
