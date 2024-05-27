@@ -1,0 +1,90 @@
+import java.util.Scanner;
+import java.util.Arrays;
+
+
+public class Main {
+    public static void main(String[] args){
+        Scanner read = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Welcome to the Snakes and Ladders !");
+        System.out.println();
+        System.out.println("The objective of this game is to reach the 100 case first !");
+        System.out.println("But be careful ! If you step on a snake case, you will fall down...");
+        System.out.println("But also if you step on a ladder case, you will go up !");
+        System.out.println("The snake cases are colored in RED and ladder cases in GREEN");
+        System.out.println("And the players will be displayed in BLUE.");
+        System.out.println();
+        System.out.println("Now, please enter the number of players (max 4).");
+
+        int numPlayers = read.nextInt();
+        if(numPlayers > 4)
+            throw new IllegalArgumentException("Maximum number of players is 4.");
+
+        Game game = new Game(numPlayers);
+
+        while(game.getWinner() == null){
+
+            for(int i = 0; i < numPlayers; i++) {
+
+                game.setCurrentPlayer(game.getPlayers()[i]);
+                Player player = game.getCurrentPlayer();
+
+                System.out.println("* " + player.getName() + "'s turn ! *");
+                System.out.println();
+                System.out.println("GAME TABLE :");
+                game.printTable();
+
+                System.out.println("Please enter anything to roll a dice");
+
+                String rolling = read.nextLine();
+
+                while(rolling.isBlank())
+                    rolling = read.nextLine();
+
+                game.rollsDice();
+                System.out.println(player.getName() + " has rolled " + game.getDice());
+                int currentCase = player.getCurrentCase();
+                player.move(game.getDice());
+                System.out.println(player.getName() + " has moved from " + currentCase + " to " + player.getCurrentCase());
+                System.out.println();
+                System.out.println("GAME TABLE :");
+                game.printTable();
+
+                currentCase = player.getCurrentCase();
+
+                int[] startCase = game.stepOnSpecialCase(currentCase);
+                if(startCase[1] != -1){
+                    int ladder_or_snake = startCase[0];
+                    int finalCase;
+
+                    if(ladder_or_snake == 0) {
+                        finalCase = game.getFinalLadders()[startCase[1]];
+                        System.out.println(player.getName() + " has stepped on a ladder case !");
+                    }
+                    else {
+                        finalCase = game.getFinalSnakes()[startCase[1]];
+                        System.out.println(player.getName() + " has stepped on a snake case !");
+                    }
+
+                    currentCase = player.getCurrentCase();
+                    player.setCurrentCase(finalCase);
+
+                    System.out.println(player.getName() + " has moved from " + currentCase + " to " + player.getCurrentCase());
+                    System.out.println();
+                    System.out.println("GAME TABLE :");
+                    game.printTable();
+                }
+
+                if(player.getCurrentCase() == 100) {
+                    player.won();
+                    game.setWinner(player);
+                    System.out.println("Congratulations ! " + player.getName() + " has won !");
+                }
+
+            }
+        }
+
+
+
+    }
+}
