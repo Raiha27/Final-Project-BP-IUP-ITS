@@ -1,4 +1,3 @@
-import java.util.Arrays;
 public class Player {
     private final int number;
     private String name = "Player ";

@@ -1,6 +1,4 @@
-import java.lang.reflect.Array;
-import java.util.Arrays;
-import java.util.concurrent.ThreadLocalRandom;
+import java.lang.Math;
 
 public class Game {
     public static final String ANSI_RESET = "\u001B[0m";
@@ -137,7 +135,8 @@ public class Game {
         this.winner = player;
     }
     public void rollsDice(){
-        this.dice = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+        //this.dice = ThreadLocalRandom.current().nextInt(1, 6 + 1);
+        this.dice = (int)(Math.random()*(6-1+1) + 1);
     }
     public int getDice(){
         return this.dice;

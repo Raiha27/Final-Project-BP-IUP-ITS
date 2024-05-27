@@ -1,5 +1,4 @@
 import java.util.Scanner;
-import java.util.Arrays;
 
 
 public class Main {
@@ -34,7 +33,7 @@ public class Main {
                 System.out.println("GAME TABLE :");
                 game.printTable();
 
-                System.out.println("Please enter anything to roll a dice");
+                System.out.println("Please enter anything to roll the dice");
 
                 String rolling = read.nextLine();
 
