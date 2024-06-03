@@ -31,13 +31,15 @@ public class Game {
         this.players = new Player[numPlayers];
 
         if(numPlayers > 1) {
-            System.out.println("Random number will be assigned for each player to decide the players' turn.");
+            System.out.println("Each player will roll the dice to decide the players' turn.");
             int[] orders = new int[numPlayers];
+            int[] exc = new int[4];
 
             for (int i = 0; i < numPlayers; i++) {
-                int x = (int) (Math.random() * 100 + 1);
+                int x = randomInt(exc);
+                exc[i] = x;
                 orders[i] = x;
-                System.out.println("Player " + (i + 1) + " has been assigned " + x);
+                System.out.println("Player " + (i + 1) + " has rolled " + x);
             }
             System.out.println();
 
@@ -176,5 +178,12 @@ public class Game {
             }
         }
         return index;
+    }
+    private int randomInt(int[] exc){
+        int res = (int)(Math.random()*6+1);
+        while(contains(exc,res) != -1){
+            res = (int)(Math.random()*6+1);
+        }
+        return res;
     }
 }
