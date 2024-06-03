@@ -7,6 +7,7 @@ public class Game {
     private final int[] startSnakes = {29,38,47,53,62,86,92,97};
     private final int[] finalSnakes = {9,15,5,33,37,54,70,25};
     private final int numPlayers;
+
     private final Player[] players;
 
     private Player currentPlayer;
@@ -29,9 +30,33 @@ public class Game {
         }
         this.players = new Player[numPlayers];
 
-        for(int i = 1; i <= numPlayers; i++)
-        {
-            this.players[i-1] = new Player(i,0);
+        if(numPlayers > 1) {
+            System.out.println("Random number will be assigned for each player to decide the players' turn.");
+            int[] orders = new int[numPlayers];
+
+            for (int i = 0; i < numPlayers; i++) {
+                int x = (int) (Math.random() * 100 + 1);
+                orders[i] = x;
+                System.out.println("Player " + (i + 1) + " has been assigned " + x);
+            }
+            System.out.println();
+
+            for (int i = 0; i < numPlayers; i++) {
+                int ind = maxList(orders);
+                orders[ind] = -1;
+
+                this.players[i] = new Player(ind+1, 0);
+            }
+            System.out.println("The order of players' turn will be as following:");
+            for (int i = 0; i < numPlayers; i++) {
+                System.out.println(players[i].getName());
+            }
+            System.out.println();
+        }
+        else {
+            for (int i = 0; i < numPlayers; i++) {
+                this.players[i] = new Player(i+1, 0);
+            }
         }
     }
     private int[] isOccupied(int n){
@@ -134,10 +159,22 @@ public class Game {
     }
     public void rollsDice(){
         //this.dice = ThreadLocalRandom.current().nextInt(1, 6 + 1);
-        this.dice = (int)(Math.random()*(6-1+1) + 1);
+        this.dice = (int)(Math.random()*6 + 1);
     }
     public int getDice(){
         return this.dice;
     }
-
+    private int maxList(int[] L){
+        int n = L.length;
+        int max = L[0];
+        int index = 0;
+        for(int i = 1; i < n; i++)
+        {
+            if(L[i] > max) {
+                max = L[i];
+                index = i;
+            }
+        }
+        return index;
+    }
 }
