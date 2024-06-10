@@ -16,8 +16,15 @@ public class Main {
         System.out.println("Now, please enter the number of players (max 6).");
 
         int numPlayers = read.nextInt();
+        while(numPlayers < 1 || numPlayers > 6)
+        {
+            System.out.println("The number of player should be 1~6 !");
+            numPlayers = read.nextInt();
+        }
+        /*
         if(numPlayers > 6)
             throw new IllegalArgumentException("Maximum number of players is 6.");
+        */
 
         Game game = new Game(numPlayers);
 
