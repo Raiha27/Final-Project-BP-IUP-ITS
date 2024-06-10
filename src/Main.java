@@ -13,11 +13,11 @@ public class Main {
         System.out.println("The snake cases are colored in RED and ladder cases in GREEN");
         System.out.println("And the players will be displayed in BLUE.");
         System.out.println();
-        System.out.println("Now, please enter the number of players (max 4).");
+        System.out.println("Now, please enter the number of players (max 6).");
 
         int numPlayers = read.nextInt();
-        if(numPlayers > 4)
-            throw new IllegalArgumentException("Maximum number of players is 4.");
+        if(numPlayers > 6)
+            throw new IllegalArgumentException("Maximum number of players is 6.");
 
         Game game = new Game(numPlayers);
 

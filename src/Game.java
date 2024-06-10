@@ -33,7 +33,7 @@ public class Game {
         if(numPlayers > 1) {
             System.out.println("Each player will roll the dice to decide the players' turn.");
             int[] orders = new int[numPlayers];
-            int[] exc = new int[4];
+            int[] exc = new int[6];
 
             for (int i = 0; i < numPlayers; i++) {
                 int x = randomInt(exc);
@@ -88,7 +88,7 @@ public class Game {
                 int[] n = isOccupied(this.gameTable[i][j]);
                 if(n.length != 0){
                     for (int value : n) System.out.print(Pallette.ANSI_CYAN + "P" + value + Pallette.ANSI_RESET);
-                    System.out.print(" ");
+                    System.out.print("\t");
                 }
                 else {
                     if(contains(this.startLadders,this.gameTable[i][j]) != -1)
@@ -98,10 +98,13 @@ public class Game {
                     else {
                         System.out.print(this.gameTable[i][j]);
                     }
-                    System.out.print(" ");
+                    System.out.print("\t");
                 }
+                /*
                 if(i == 9)
-                    System.out.print(" ");
+                    System.out.print("\t");
+
+                 */
             }
             System.out.println();
         }
