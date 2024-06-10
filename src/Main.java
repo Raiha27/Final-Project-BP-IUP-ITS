@@ -10,8 +10,8 @@ public class Main {
         System.out.println("The objective of this game is to reach the 100 case first !");
         System.out.println("But be careful ! If you step on a snake case, you will fall down...");
         System.out.println("But also if you step on a ladder case, you will go up !");
-        System.out.println("The snake cases are colored in RED and ladder cases in GREEN");
-        System.out.println("And the players will be displayed in BLUE.");
+        System.out.println("The snake tiles are colored in " + Pallette.ANSI_RED+ "RED" + Pallette.ANSI_RESET+ " and ladder tiles in " + Pallette.ANSI_GREEN+"GREEN" + Pallette.ANSI_RESET);
+        System.out.println("And the players will be displayed in " + Pallette.ANSI_CYAN + "BLUE." + Pallette.ANSI_RESET);
         System.out.println();
         System.out.println("Now, please enter the number of players (max 6).");
 
