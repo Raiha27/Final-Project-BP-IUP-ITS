@@ -7,7 +7,7 @@ public class Main {
         System.out.println();
         System.out.println("Welcome to the Snakes and Ladders !");
         System.out.println();
-        System.out.println("The objective of this game is to reach the 100 case first !");
+        System.out.println("The objective of this game is to reach the 100th tile first !");
         System.out.println("But be careful ! If you step on a snake tile, you will fall down...");
         System.out.println("But also if you step on a ladder tile, you will go up !");
         System.out.println("The snake tiles are colored in " + Pallette.ANSI_RED+ "RED" + Pallette.ANSI_RESET+ " and ladder tiles in " + Pallette.ANSI_GREEN+"GREEN" + Pallette.ANSI_RESET);
