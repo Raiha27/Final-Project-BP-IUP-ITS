@@ -58,11 +58,11 @@ public class Main {
 
                     if(ladder_or_snake == 0) {
                         finalCase = game.getFinalLadders()[startCase[1]];
-                        System.out.println(player.getName() + " has stepped on a ladder case !");
+                        System.out.println(player.getName() + " has found a ladder !");
                     }
                     else {
                         finalCase = game.getFinalSnakes()[startCase[1]];
-                        System.out.println(player.getName() + " has stepped on a snake case !");
+                        System.out.println(player.getName() + " has been bitten by a snake !");
                     }
 
                     currentCase = player.getCurrentCase();

@@ -31,6 +31,7 @@ public class Game {
         this.players = new Player[numPlayers];
 
         if(numPlayers > 1) {
+            System.out.println();
             System.out.println("Each player will roll the dice to decide the players' turn.");
             int[] orders = new int[numPlayers];
             int[] exc = new int[6];
