@@ -85,6 +85,7 @@ public class Main {
                     player.won();
                     game.setWinner(player);
                     System.out.println("Congratulations ! " + player.getName() + " has won !");
+                    break;
                 }
 
             }
